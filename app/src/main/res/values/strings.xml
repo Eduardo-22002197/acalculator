@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">acalculator</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- Drawer -->
+    <string name="calculator">Calculator</string>
+    <string name="history">History</string>
+    <string name="drawer_open">Aberto</string>
+    <string name="drawer_close">Fechado</string>
+</resources>
