@@ -12,7 +12,7 @@ import com.cm.acalculator.model.Calculator
 
 class CalculatorFragment : Fragment() {
     private lateinit var binding: FragmentCalculatorBinding
-    private val calculator = Calculator()
+    // private val calculator = Calculator()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,33 +44,33 @@ class CalculatorFragment : Fragment() {
         binding.buttonDivision.setOnClickListener { onClickSymbol("/") }
         binding.buttonDot.setOnClickListener { onClickSymbol(".") }
         binding.buttonEquals.setOnClickListener { onClickEquals() }
-        binding.buttonClear.setOnClickListener { onClear() }
         binding.buttonBackspace.setOnClickListener { onDelete() }
+        binding.buttonClear.setOnClickListener { onClear() }
     }
 
     private fun onClickSymbol(symbol: String) {
         logClickOnButton(symbol)
-        calculator.addSymbol(symbol)
-        binding.textVisor.text = calculator.display
+        Calculator.addSymbol(symbol)
+        binding.textVisor.text = Calculator.display
     }
 
     private fun onClickEquals() {
         logClickOnButton("=")
-        calculator.equals()
-        binding.textVisor.text = calculator.display
+        Calculator.equals()
+        binding.textVisor.text = Calculator.display
         Log.i(TAG, "Expression result: ${binding.textVisor.text}")
     }
 
     private fun onDelete() {
         logClickOnButton("<")
-        calculator.delete()
-        binding.textVisor.text = calculator.display
+        Calculator.delete()
+        binding.textVisor.text = Calculator.display
     }
 
     private fun onClear() {
         logClickOnButton("CE")
-        calculator.clear()
-        binding.textVisor.text = calculator.display
+        Calculator.clear()
+        binding.textVisor.text = Calculator.display
     }
 
     private fun logClickOnButton(button: String) {

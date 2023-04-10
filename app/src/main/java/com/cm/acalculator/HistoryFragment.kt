@@ -10,7 +10,7 @@ import com.cm.acalculator.model.Calculator
 
 class HistoryFragment : Fragment() {
     private lateinit var binding: FragmentHistoryBinding
-    private val calculator = Calculator()
+    // private val calculator = Calculator()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,7 +27,7 @@ class HistoryFragment : Fragment() {
     override fun onStart() {
         super.onStart()
         val builder = StringBuilder()
-        val history = calculator.history
+        val history = Calculator.history
 
         history.forEach {
             builder.append("${it.expression}=${it.result}\n")
