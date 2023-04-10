@@ -7,12 +7,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.cm.acalculator.databinding.FragmentCalculatorBinding
 import com.cm.acalculator.model.Calculator
 
 class CalculatorFragment : Fragment() {
     private lateinit var binding: FragmentCalculatorBinding
-    // private val calculator = Calculator()
+    private val adapter = HistoryAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,6 +29,8 @@ class CalculatorFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
+        binding.rvHistory?.layoutManager = LinearLayoutManager(requireContext())
+        binding.rvHistory?.adapter = adapter
         binding.button0.setOnClickListener { onClickSymbol("0") }
         binding.button1.setOnClickListener { onClickSymbol("1") }
         binding.button2.setOnClickListener { onClickSymbol("2") }
@@ -57,6 +60,8 @@ class CalculatorFragment : Fragment() {
     private fun onClickEquals() {
         logClickOnButton("=")
         Calculator.equals()
+        val history = Calculator.history
+        adapter.updateItems(history)
         binding.textVisor.text = Calculator.display
         Log.i(TAG, "Expression result: ${binding.textVisor.text}")
     }
